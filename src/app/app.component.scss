@@ -1,0 +1,56 @@
+.all-container {
+    width: 100vw;
+    height: 100vh;
+    padding: 5vw;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.carousel-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .carousel-caption {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        h5 {
+            width: fit-content;
+            padding: 10px;
+            border-radius: 6px;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+    }
+}
+
+.carousel-item {
+
+    img {
+        height: 60vh;
+        width: 90vw;
+    }
+}
+
+.description {
+    padding: 5px;
+    overflow: hidden;
+    height: 30vh;
+    width: 90vw;
+    background-color: #ffdd99;
+    position: absolute;
+    bottom : 0;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    
+    &.opened {
+        height: 90vh;
+    }
+
+    .extendedButton {
+        position: absolute;
+    }
+}
