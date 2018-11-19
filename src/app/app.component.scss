@@ -70,7 +70,7 @@
     position: fixed;
     bottom: 0px;
     width: 100vw;
-    height: 45px;
+    height: 35px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -79,12 +79,16 @@
     box-shadow: 0px 0px 2px 5px rgb(15, 15, 15);;
 
     .relief-logo {
-        height: 40px;
-        width: 80px;
+        height: 25px;
+        width: 50px;
     }
     .wfp-logo {
-        height: 35px;
-        width: 50px;
+        height: 25px;
+        width: 35px;
+    }
+    .signature img {
+        height: 25px;
+        width: 35px;
     }
     .contact-button button {
         color:whitesmoke;
