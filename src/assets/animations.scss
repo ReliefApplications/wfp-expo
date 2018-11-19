@@ -31,3 +31,18 @@
         transform: scale(0.9);
     }
 }
+
+@keyframes pass-by {
+    0% {
+        transform: translateX(100vw);
+    }
+    20% {
+        transform: translateX(0px);
+    }
+    80% {
+        transform: translateX(0px);
+    }
+    100% {
+        transform: translateX(-100vw);
+    }
+}

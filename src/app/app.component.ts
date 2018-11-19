@@ -13,6 +13,7 @@ export class AppComponent {
     title = 'wfp-expo';
     ready = false;
     readonly numberOfArtworks = 5;
+    dialogOpened = false;
 
     // Parameters
     route = '';
@@ -115,5 +116,14 @@ export class AppComponent {
         }
         this.router.navigateByUrl('/artwork/' + newId);
         window.location.reload();
+    }
+
+    openDialog() {
+        this.dialogOpened = true;
+        let snack = timer(4000).subscribe( 
+            () => {
+                this.dialogOpened = false;
+                snack.unsubscribe();
+            })
     }
 }

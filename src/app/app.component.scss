@@ -133,3 +133,17 @@
         color: white;
     }
 }
+
+.snackWindow {
+    position: fixed;
+    bottom: 35px;
+
+    width: 100vw;
+    height: auto;
+    z-index: 1000;
+    color: whitesmoke;
+    background-color: #000033;
+    text-align: center;
+
+    animation: pass-by 4s 0s;
+}

@@ -90,7 +90,7 @@
     <a class="logo" href="https://reliefapps.com/" target="blank">
         <img class="relief-logo" src="./../assets/relief_apps_logo_white.png">
     </a>
-    <div class="signature">
+    <div class="signature" (click)="openDialog()">
         <img src="../assets/artworks/signatureWhite.png">
     </div>
     <div class="navigate" (click)="changeArt('next')" *ngIf="artId<numberOfArtworks">
@@ -98,7 +98,7 @@
     </div>
 </div>
 
-<div class="snackbar" *ngIf="false">
+<div class="snackWindow" *ngIf="dialogOpened">
     Laura de Franchis <br/>
     Artist - Coach <br/>
     WFP regional M&E officer
