@@ -13,19 +13,28 @@
 
     padding: 15px;
     width: 90vw;
-    background-color: rgba(255, 241, 214, 0.9);
+    background-color: rgba(15, 15, 15, 0.965);
+    color: whitesmoke;
     border-radius: 8px;
 
-    .carousel-container {
+    .firstTitle {
+        margin-bottom: 5px;
+        font-family: Dream;
     }
+    .carousel-container {
+        .carousel-caption {
+            margin: 0px !important;
+            padding: 5px !important;
+            border-radius: 8px;
+            background-color: rgba(15, 15, 15, 0.5);
 
-    .resume {
-        margin-top: 5px;
-        padding: 5px;
-        height: 12vh;
-    
-        font-family: Night;
-        text-align: center;
+            .captions {
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                font-weight: bold;
+                font-size: 0.8em;
+                padding-bottom: 8px;
+            }
+        }
     }
 }
 
@@ -42,14 +51,46 @@
     padding: 10px;
     border-radius: 8px;
     width: 90vw;
-    background-color: rgba(255, 241, 214, 0.9);
-
+    background-color: rgba(15, 15, 15, 0.965);
+    color: whitesmoke;
     text-align: justify;
 
     .title {
         text-align: center;
-        font-family: Neou;
+        font-family: Dream;
         margin-bottom: 10px;
         margin-top: 5px;
+    }
+
+    margin-bottom: 60px;
+
+}
+
+.footer {
+    position: fixed;
+    bottom: 0px;
+    width: 100vw;
+    height: 45px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(15, 15, 15);
+    box-shadow: 0px 0px 2px 5px rgb(15, 15, 15);;
+
+    .relief-logo {
+        height: 40px;
+        width: 80px;
+    }
+    .wfp-logo {
+        height: 35px;
+        width: 50px;
+    }
+    .contact-button button {
+        color:whitesmoke;
+        background-color: #000033;
+        border: 1px solid whitesmoke;
+        box-shadow: 1px 1px 0.5px 0.5px whitesmoke;
+        border-radius: 8px;
     }
 }
