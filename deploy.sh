@@ -6,6 +6,7 @@
 ng build --prod
 echo "==="
 echo "Build complete"
+cp .htaccess dist/
 
 # deploy on reliefapps server
 rsync -ravzh dist/ manager@reliefapps:/var/www/html/
