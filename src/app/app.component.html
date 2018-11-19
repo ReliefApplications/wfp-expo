@@ -60,7 +60,7 @@
 
     <div class="description">
         <div class='title'>
-            <strong> Artwork by Laura de Franchos </strong>
+            <strong> Artwork by Laura de Franchis </strong>
         </div>
         <p> 
             On 7 February 2018, a magnitude 7.5 earthquake affected over half a million people in Papua New Guinea. Homes, farms, water sources and roads were destroyed across four provinces. 
@@ -81,7 +81,7 @@
 </div>
 
 <div class="footer" *ngIf="ready">
-    <div class="navigate" (click)="changeArt('prev')" *ngIf="false">
+    <div class="navigate" (click)="changeArt('prev')" *ngIf="artId>1">
             ◄
     </div>
     <a class="logo" href="http://www1.wfp.org/" target="blank">
@@ -93,11 +93,13 @@
     <div class="signature">
         <img src="../assets/artworks/signatureWhite.png">
     </div>
-    <div class="navigate" (click)="changeArt('next')" *ngIf="false">
+    <div class="navigate" (click)="changeArt('next')" *ngIf="artId<5">
         ►
     </div>
 </div>
 
 <div class="snackbar" *ngIf="false">
-    
+    Laura de Franchis <br/>
+    Artist - Coach <br/>
+    WFP regional M&E officer
 </div>
