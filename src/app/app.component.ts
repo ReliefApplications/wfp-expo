@@ -34,8 +34,6 @@ export class AppComponent {
     }
 
     loadPage() {
-        this.route = this.location.path();
-
         this.ready = false;
         let timerForLoad = this.timing$.subscribe(
             () => {
@@ -46,13 +44,13 @@ export class AppComponent {
             }
         );
 
+        this.route = this.location.path();
         this.getArtId();
         this.loadArtworks();
     }
 
     onSwipe(evt, prev, next) {
         const x = Math.abs(evt.deltaX) > 40 ? (evt.deltaX > 0 ? 'right' : 'left') : '';
-        const y = Math.abs(evt.deltaY) > 40 ? (evt.deltaY > 0 ? 'down' : 'up') : '';
 
         if (x === 'right') {
             prev.click();
@@ -66,10 +64,9 @@ export class AppComponent {
         if (this.route.substring(0, 8) === '/artwork') {
 
             let id = Number(this.route.split('/artwork/')[1]);
-            if (id) {
+            if(id) {
                 this.artId = id;
-            } else {
-                this.artId = 0;
+                console.log(id);
             }
         }
     }
@@ -115,7 +112,7 @@ export class AppComponent {
         } else if(way === "next" && newId<5) {
             newId++;
         }
-        this.router.navigate(['/artwork/' + newId]);
-        this.loadPage();
+        this.router.navigateByUrl('/artwork/' + newId);
+        window.location.reload();
     }
 }
