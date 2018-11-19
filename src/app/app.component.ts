@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class AppComponent {
     title = 'wfp-expo';
     ready = false;
+    readonly numberOfArtworks = 5;
 
     // Parameters
     route = '';

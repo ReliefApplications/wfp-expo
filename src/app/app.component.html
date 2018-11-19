@@ -7,7 +7,7 @@
 <div class="all-container" *ngIf="ready">
     <div class="main-content">
         <div class="firstTitle">
-            <strong > “ People by Jerry ” </strong>
+            <strong > “ People by Jerry " - {{artId}}/{{numberOfArtworks}} </strong>
         </div>
 
         <div class="carousel-container" (swipe)="onSwipe($event, CarouselPrev ,CarouselNext)">
@@ -34,7 +34,7 @@
                         <img [src]="images[1]">
                         <div class="carousel-caption d-md-block">
                             <div class="captions">
-                                Linocut - PNG {{artId+1}} - series 6/6 <br />
+                                Linocut - PNG {{artId}} - series 6/6 <br />
                                 <i> by Laura de Franchis </i>
                             </div>
                         </div>
@@ -93,7 +93,7 @@
     <div class="signature">
         <img src="../assets/artworks/signatureWhite.png">
     </div>
-    <div class="navigate" (click)="changeArt('next')" *ngIf="artId<5">
+    <div class="navigate" (click)="changeArt('next')" *ngIf="artId<numberOfArtworks">
         ►
     </div>
 </div>
