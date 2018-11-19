@@ -1,3 +1,34 @@
 body {
+    background: url(./assets/artworks/signatureWhite.png) repeat;
+    background-size: 20vw;
     background-color: #000033;
+}
+
+@font-face {
+    font-family: BigNoodle;
+    src: url(./assets/fonts/big_noodle_titling.ttf)
+}
+@font-face {
+    font-family: Caviar;
+    src: url(./assets/fonts/CaviarDreams.ttf)
+}
+@font-face {
+    font-family: Vogue;
+    src: url(./assets/fonts/Vogue.ttf)
+}
+@font-face {
+    font-family: Dream;
+    src: url(./assets/fonts/dreamOrphans.ttf)
+}
+@font-face {
+    font-family: Megan;
+    src: url(./assets/fonts/MeganJune.otf)
+}
+@font-face {
+    font-family: Neou;
+    src: url(./assets/fonts/Neou-Bold.otf)
+}
+@font-face {
+    font-family: Night;
+    src: url(./assets/fonts/NightStillComes_mine_final_sample.otf)
 }
