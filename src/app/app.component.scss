@@ -2,27 +2,38 @@
     width: 100vw;
     height: 100vh;
     padding: 5vw;
-    overflow: hidden;
 
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
-.carousel-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.main-content {
+    text-align: center;
 
-    .carousel-caption {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    padding: 15px;
+    width: 90vw;
+    background-color: rgba(15, 15, 15, 0.965);
+    color: whitesmoke;
+    border-radius: 8px;
 
-        h5 {
-            width: fit-content;
-            padding: 10px;
-            border-radius: 6px;
-            background-color: rgba(0, 0, 0, 0.7);
+    .firstTitle {
+        margin-bottom: 5px;
+        font-family: Dream;
+    }
+    .carousel-container {
+        .carousel-caption {
+            margin: 0px !important;
+            padding: 5px !important;
+            border-radius: 8px;
+            background-color: rgba(15, 15, 15, 0.5);
+
+            .captions {
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                font-weight: bold;
+                font-size: 0.8em;
+                padding-bottom: 8px;
+            }
         }
     }
 }
@@ -30,28 +41,56 @@
 .carousel-item {
 
     img {
-        height: 60vh;
-        width: 90vw;
+        max-height: 60vh;
+        max-width: 90vw;
     }
 }
 
 .description {
-    padding: 5px;
-    overflow: hidden;
-    height: 30vh;
+    margin: 5vw;
+    padding: 10px;
+    border-radius: 8px;
     width: 90vw;
-    background-color: #080807;
+    background-color: rgba(15, 15, 15, 0.965);
     color: whitesmoke;
-    position: absolute;
-    bottom : 0;
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
-    
-    &.opened {
-        height: 90vh;
+    text-align: justify;
+
+    .title {
+        text-align: center;
+        font-family: Dream;
+        margin-bottom: 10px;
+        margin-top: 5px;
     }
 
-    .extendedButton {
-        position: absolute;
+    margin-bottom: 60px;
+
+}
+
+.footer {
+    position: fixed;
+    bottom: 0px;
+    width: 100vw;
+    height: 45px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(15, 15, 15);
+    box-shadow: 0px 0px 2px 5px rgb(15, 15, 15);;
+
+    .relief-logo {
+        height: 40px;
+        width: 80px;
+    }
+    .wfp-logo {
+        height: 35px;
+        width: 50px;
+    }
+    .contact-button button {
+        color:whitesmoke;
+        background-color: #000033;
+        border: 1px solid whitesmoke;
+        box-shadow: 1px 1px 0.5px 0.5px whitesmoke;
+        border-radius: 8px;
     }
 }
