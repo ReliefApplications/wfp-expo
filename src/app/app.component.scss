@@ -13,10 +13,13 @@
         border-radius: 100%;
         background-color: whitesmoke;
         box-shadow: 0px 0px 2px 5px whitesmoke;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
         img {
-            transform: translate(12px, 10px);
-            width: 40vw;
+            width: 80px;
+            height: 110px;
         }
 
         animation: clign 0.6s 0s infinite alternate-reverse;
@@ -115,7 +118,7 @@
     }
     .wfp-logo {
         height: 25px;
-        width: 35px;
+        width: 20px; //35
     }
     .signature img {
         height: 25px;
