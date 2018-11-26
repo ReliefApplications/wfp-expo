@@ -11,8 +11,10 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
     title = 'wfp-expo';
+    artTitle = '';
     ready = false;
-    readonly numberOfArtworks = 5;
+    readonly minArtId = 10; //1
+    readonly numberOfArtworks = 13; //5
     dialogOpened = false;
 
     // Parameters
@@ -101,6 +103,34 @@ export class AppComponent {
                 this.images[0] = './assets/artworks/original5.png';
                 this.images[1] = './assets/artworks/art5.jpeg';
                 break;
+            case 10:
+                this.artTitle = 'River of Manzanares El Real';
+                this.images[0] = './assets/manzanares/10_1.png';
+                this.images[1] = './assets/manzanares/10_2.png';
+                this.images[2] = './assets/manzanares/10_3.png';
+                this.images[3] = './assets/manzanares/10_4.png';
+                break;
+            case 11:
+                this.artTitle = 'Castle of Manzanares El Real';
+                this.images[0] = './assets/manzanares/11_1.png';
+                this.images[1] = './assets/manzanares/11_2.png';
+                this.images[2] = './assets/manzanares/11_3.png';
+                this.images[3] = './assets/manzanares/11_4.png';
+                break;
+            case 12:
+                this.artTitle = 'Mountains of Manzanares El Real';
+                this.images[0] = './assets/manzanares/12_1.png';
+                this.images[1] = './assets/manzanares/12_2.png';
+                this.images[2] = './assets/manzanares/12_3.png';
+                this.images[3] = './assets/manzanares/12_4.png';
+                break;
+            case 13:
+                this.artTitle = 'Artwork from the castle';
+                this.images[0] = './assets/manzanares/13_1.png';
+                this.images[1] = '';
+                this.images[2] = '';
+                this.images[3] = '';
+                break;
             default:
                 break;
         }
@@ -109,9 +139,9 @@ export class AppComponent {
     changeArt(way : string) {
         let newId = this.artId;
 
-        if(way === "prev" && newId>1) {
+        if(way === "prev" && newId>this.minArtId) {
             newId--;
-        } else if(way === "next" && newId<5) {
+        } else if(way === "next" && newId<this.numberOfArtworks) {
             newId++;
         }
         this.router.navigateByUrl('/artwork/' + newId);
