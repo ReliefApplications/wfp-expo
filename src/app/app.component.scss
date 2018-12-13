@@ -26,6 +26,21 @@
     }
 }
 
+.cog-menu {
+	padding: 15px;
+	color:black;
+	font-size: 26px;
+	cursor: pointer;
+}
+
+.dropdown-menu>li>a{
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.dropdown-menu .glyphicon {
+	margin-right: 5px;
+}
+
 .all-container {
     width: 100vw;
     height: 100vh;
@@ -35,6 +50,13 @@
     flex-direction: column;
     align-items: center;
 }
+
+.glyphicon  {
+    
+    color:red;
+}
+
+
 
 .main-content {
     text-align: center;

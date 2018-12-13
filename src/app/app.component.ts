@@ -3,6 +3,12 @@ import { Location } from '@angular/common';
 import { timer, from } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { VoiceSpeaker } from './voice-speaker';
+import { GlobalText } from './../texts/global';
+
+
+var Speech = require('speak-tts');
+
 
 @Component({
     selector: 'app-root',
@@ -10,16 +16,22 @@ import { Router } from '@angular/router';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+    selectedCountry : string;
+    public header = GlobalText.TEXTS;
+    public language = "en";
     title = 'wfp-expo';
     artTitle = '';
     ready = false;
     readonly minArtId = 10; //1
     readonly numberOfArtworks = 13; //5
     dialogOpened = false;
+    languages=GlobalText.languages;
+    selectedLanguage='es';
 
     // Parameters
-    route = '';
-    artId = 0;
+    public route = '';
+    public artId = 0;
 
     // Observable
     readonly WAITING_INITIAL_TIME = 1500; //ms
@@ -31,11 +43,59 @@ export class AppComponent {
     constructor(
         private location: Location,
         private router: Router,
-    ) { }
+        private voice: VoiceSpeaker
+   
+    ) {
+
+        console.log(voice);
+     }
 
     ngOnInit() {
         this.loadPage();
+         
     }
+
+    getFlag(c: string) {
+        let url = '';
+
+        if(c) {
+            url = ("./assets/flags-mini/" + c + ".png");
+        } else {
+            url = ("./assets/flags-mini/es.png");
+        }
+
+        this.selectedLanguage=c;
+
+        return(url);
+    }
+
+   selectLanguage(language:string) {
+
+    GlobalText.changeLanguage(language);
+    
+    this.loadPage();
+    console.log(GlobalText.language);
+    
+       
+   }
+
+   
+
+
+
+    // openDialog(user_action): void {
+    //     let dialogRef;
+
+    //     if (user_action == 'language') {
+    //         dialogRef = this.dialog.open(ModalLanguageComponent, {
+    //             width: "40%",
+    //         });
+    //     }
+    //     dialogRef.afterClosed().subscribe(result => {
+    //         this.language = GlobalText.language;
+    //     });
+    // }
+
 
     loadPage() {
         this.ready = false;

@@ -6,6 +6,13 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { VoiceSpeaker } from './voice-speaker';
+import { MatMenuModule} from '@angular/material';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material'
+
+
+
 
 @NgModule({
   declarations: [
@@ -13,12 +20,19 @@ import { environment } from '../environments/environment';
   ],
   imports: [
     BrowserModule,
+    MatMenuModule,
     AppRoutingModule,
     AppRoutingModule,
+    MatDialogModule,
     BrowserAnimationsModule,
+    MatSnackBarModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [],
+  providers: [
+    VoiceSpeaker,
+
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
