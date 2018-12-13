@@ -27,6 +27,7 @@ export class GlobalText {
                 break;
         }
         this.language = language;
+        return GlobalText.TEXTS;
         //this.adaptMargin();
     }
 

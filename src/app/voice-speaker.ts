@@ -1,15 +1,14 @@
-import * as Speech from 'speak-tts';
+
 import { Injectable } from '@angular/core';
+import * as speaker from '../assets/voice.js'
 
 @Injectable()
+
 export class VoiceSpeaker {
 
-    speaker = Speech.default;
 
     constructor() {
-        this.speaker = new Speech.default();
-        console.log(this.speaker);
-          
+        console.log(speaker);   
     }
 
 }

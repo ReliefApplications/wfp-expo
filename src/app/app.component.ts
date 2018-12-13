@@ -7,9 +7,6 @@ import { VoiceSpeaker } from './voice-speaker';
 import { GlobalText } from './../texts/global';
 
 
-var Speech = require('speak-tts');
-
-
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
@@ -63,39 +60,16 @@ export class AppComponent {
         } else {
             url = ("./assets/flags-mini/es.png");
         }
-
-        this.selectedLanguage=c;
-
         return(url);
     }
 
    selectLanguage(language:string) {
 
-    GlobalText.changeLanguage(language);
-    
+    this.header=GlobalText.changeLanguage(language);
+    this.selectedLanguage=language;
     this.loadPage();
-    console.log(GlobalText.language);
-    
        
    }
-
-   
-
-
-
-    // openDialog(user_action): void {
-    //     let dialogRef;
-
-    //     if (user_action == 'language') {
-    //         dialogRef = this.dialog.open(ModalLanguageComponent, {
-    //             width: "40%",
-    //         });
-    //     }
-    //     dialogRef.afterClosed().subscribe(result => {
-    //         this.language = GlobalText.language;
-    //     });
-    // }
-
 
     loadPage() {
         this.ready = false;

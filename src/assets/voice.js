@@ -1,6 +1,8 @@
 import  Speech  from 'speak-tts';
 
-var Speech = require('speak-tts');
+//var Speech = require('speak-tts');
+
+var speakButton ;
 
 const _addVoicesList = voices => {
   const list = window.document.createElement("div");
@@ -23,7 +25,7 @@ function _init() {
       lang: "es-ES",
       rate: 1,
       pitch: 1,
-      //'voice':'Google UK English Male',
+      //voice:'Google UK English Male',
       //'splitSentences': false,
       listeners: {
         onvoiceschanged: voices => {
@@ -33,23 +35,35 @@ function _init() {
     })
     .then(data => {
       console.log("Speech is ready", data);
-      _addVoicesList(data.voices);
+      //_addVoicesList(data.voices);
+     
       _prepareSpeakButton(speech);
+  
     })
     .catch(e => {
       console.error("An error occured while initializing : ", e);
     });
-  const text = speech.hasBrowserSupport()
-    ? "Hurray, your browser supports speech synthesis"
-    : "Your browser does NOT support speech synthesis. Try using Chrome of Safari instead !";
-  document.getElementById("support").innerHTML = text;
+  // const text = speech.hasBrowserSupport()
+  //   ? "Hurray, your browser supports speech synthesis"
+  //   : "Your browser does NOT support speech synthesis. Try using Chrome of Safari instead !";
+  //   window.onload = function() {
+  //     document.getElementById("play").innerHTML = text;
+
+  //   }
+  
 }
 
 function _prepareSpeakButton(speech) {
-  const speakButton = document.getElementById("play");
+  window.onload= function(){
+     speakButton = document.getElementsById("play");
+  }
+  console.log(window.onload);
+  
+  console.log(speakButton);
   const pauseButton = document.getElementById("pause");
   const resumeButton = document.getElementById("resume");
   const textarea = document.getElementById("text");
+  console.log(textarea);
   const languages = document.getElementById("languages");
   speakButton.addEventListener("click", () => {
     const language = languages.value;
@@ -89,6 +103,7 @@ function _prepareSpeakButton(speech) {
   });
   pauseButton.addEventListener("click", () => {
     speech.pause();
+    console.log(speech.pause());
   });
   resumeButton.addEventListener("click", () => {
     speech.resume();

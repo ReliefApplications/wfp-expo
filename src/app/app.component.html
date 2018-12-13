@@ -94,40 +94,12 @@
             <strong *ngIf="artId>9"> The city of Manzanares el Real</strong>
         </div>
         <p id="text" *ngIf="artId<6">
-            On 7 February 2018, a magnitude 7.5 earthquake affected over half a million people in Papua New Guinea.
-            Homes, farms, water sources and roads were destroyed across four provinces.
-            For families who were already isolated and food insecure, the earthquake was a double burden - it cut them
-            off from help and increased their vulnerability to hunger and malnutrition.
-            The World Food Programme launched a response that concluded in June. We provided emergency food assistance
-            to 33,000 people in some of the hardest-hit areas,
-            focused on the Southern Highlands. But finding these families was no easy task in a country made up of
-            remote communities, mountainous terrain and limited data on where people needed help the most.
-            When organizing food distributions in the Southern Highlands, WFP asked local councillors in Pau’a for
-            lists of families who should receive assistance.
-            Jerry immediately took some paper and a pen and walked through the area counting people and drawing
-            circles. The next day he handed WFP colleagues multiple sheets of paper covered with circles on both sides.
-            WFP distributed high energy biscuits, rice and canned tuna to 1140 people in Pau’a. Other lists - not
-            Jerry’s - were used for the distributions.
-            These 5 linocuts are freely inspired copies of Jerry’s work that Mairi Sun showed me on her return from
-            Papua New Guinea after she took part in WFP’s response in the Southern Highlands.
-            They are a metaphor for the challenge of identifying, counting and representing people in need of
-            assistance.
+            {{this.header.ARTICLE}}
         </p>
         <p id="text" *ngIf="artId>9">
 
-            {{this.header.param}}
-            <!-- Manzanares el Real is a 7,250 inhabitant town in the northern area of the autonomous Community of Madrid.
-            It is located at the foot of The Pedriza, a part of the Sierra de Guadarrama, and next to the embalse de
-            Santillana. 
-            the New Castle of Manzanares el Real, the best conserved castle in the Community of Madrid. Construction
-            commencing in 1475, it has been used in several motion pictures, most notably El Cid. 
-            The Old Castle of Manzanares el Real is the ruin of a former fortress, also known as Plaza de Armas. Only
-            two walls remain standing, now integrated into a garden complex. It was built in Mudejar style of granite
-            with brick curbing. 
-            Church of Nuestra Señora de las Nieves, founded in the early 14th century. It has a nave and two aisles,
-            separated by arcades on stone columns. The nave, in Romanesque styles, ends into a pentagonal presbytery.
-            The church has also a 16th-century Renaissance portico. 
-            Hermitage of Nuestra Señora de la Peña Sacra... -->
+            {{this.header.MANZANARES}}
+            
         </p>
     </div>
 </div>
@@ -139,12 +111,17 @@
                     <img [src]=getFlag(selectedLanguage)> <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" role="menu">
-              <li  *ngFor="let l of languages" (click)=loadPage(l)>
+              <li  *ngFor="let l of languages" (click)=selectLanguage(l)>
                   <img [src]="getFlag(l)">
               </li>
               
             </ul>
           </div>
+          <button id="play"> Play </button>
+          <button id="pause"> Pause </button>
+          <button id="resume"> Resume </button>
+
+         
     
 
 
