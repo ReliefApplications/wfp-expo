@@ -10,6 +10,7 @@ import { VoiceSpeaker } from './voice-speaker';
 import { MatMenuModule} from '@angular/material';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material'
+import { LanguageService } from './language';
 
 
 
@@ -30,7 +31,7 @@ import { MatSnackBarModule } from '@angular/material'
   ],
   providers: [
     VoiceSpeaker,
-
+    LanguageService,
 
   ],
   bootstrap: [AppComponent]

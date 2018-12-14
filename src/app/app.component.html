@@ -93,11 +93,12 @@
             <strong *ngIf="artId<6"> Artwork by Laura de Franchis </strong>
             <strong *ngIf="artId>9"> The city of Manzanares el Real</strong>
         </div>
-        <p id="text" *ngIf="artId<6">
+        <p #articleText *ngIf="artId<6">
+            Arturo es un buen director.
             {{this.header.ARTICLE}}
         </p>
-        <p id="text" *ngIf="artId>9">
-
+        <p #articleText *ngIf="artId>9">
+                Arturo es un buen director.
             {{this.header.MANZANARES}}
             
         </p>
@@ -108,7 +109,7 @@
 
       <div class="btn-group dropup">
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    <img [src]=getFlag(selectedLanguage)> <span class="caret"></span>
+                    <img [src]=getFlag(this.languageService.selectedLanguage)> <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" role="menu">
               <li  *ngFor="let l of languages" (click)=selectLanguage(l)>
@@ -117,9 +118,9 @@
               
             </ul>
           </div>
-          <button id="play"> Play </button>
-          <button id="pause"> Pause </button>
-          <button id="resume"> Resume </button>
+          <button #speakButton ids="play"> Play </button>
+          <button #pauseButton ids="pause"> Pause </button>
+          <button #resumeButton ids="resume"> Resume </button>
 
          
     

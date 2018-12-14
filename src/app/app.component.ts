@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ElementRef, AfterViewInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { Location } from '@angular/common';
 import { timer, from } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { VoiceSpeaker } from './voice-speaker';
 import { GlobalText } from './../texts/global';
+import { LanguageService } from './language';
 
 
 @Component({
@@ -12,72 +13,78 @@ import { GlobalText } from './../texts/global';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit, AfterViewInit {
 
-    selectedCountry : string;
-    public header = GlobalText.TEXTS;
-    public language = "en";
+    readonly minArtId = 10; // 1
+    readonly numberOfArtworks = 13; // 5
+    readonly WAITING_INITIAL_TIME = 1500; // ms
+
+    selectedCountry: string;
+    header = GlobalText.TEXTS;
+    language = 'en-EN';
     title = 'wfp-expo';
     artTitle = '';
     ready = false;
-    readonly minArtId = 10; //1
-    readonly numberOfArtworks = 13; //5
     dialogOpened = false;
-    languages=GlobalText.languages;
-    selectedLanguage='es';
+    languages = GlobalText.languages;
 
     // Parameters
     public route = '';
     public artId = 0;
 
-    // Observable
-    readonly WAITING_INITIAL_TIME = 1500; //ms
+    // Timer
     timing$ = timer(this.WAITING_INITIAL_TIME);
 
     // Images
     images = ['', ''];
 
+    @ViewChild('speakButton', {read: ElementRef}) speakButton: ElementRef;
+    @ViewChild('pauseButton') pauseButton;
+    @ViewChild('resumeButton') resumeButton;
+    @ViewChild('articleText') articleText;
+
     constructor(
         private location: Location,
         private router: Router,
-        private voice: VoiceSpeaker
-   
+        private cdr: ChangeDetectorRef,
+        private voice: VoiceSpeaker,
+        private languageService: LanguageService,
     ) {
-
-        console.log(voice);
+        this.languageService.selectedLanguage = 'es-ES';
      }
 
     ngOnInit() {
+    }
+
+    ngAfterViewInit() {
         this.loadPage();
-         
     }
 
     getFlag(c: string) {
-        let url = '';
-
-        if(c) {
-            url = ("./assets/flags-mini/" + c + ".png");
-        } else {
-            url = ("./assets/flags-mini/es.png");
-        }
-        return(url);
+        return c ? ('./assets/flags-mini/' + c + '.png') : ('./assets/flags-mini/es.png');
     }
 
-   selectLanguage(language:string) {
-
-    this.header=GlobalText.changeLanguage(language);
-    this.selectedLanguage=language;
+   selectLanguage(language: string) {
+    this.header = GlobalText.changeLanguage(language);
+    this.languageService.selectedLanguage = language;
     this.loadPage();
-       
    }
 
     loadPage() {
         this.ready = false;
-        let timerForLoad = this.timing$.subscribe(
+        const timerForLoad = this.timing$.subscribe(
             () => {
-                if(this.images[0]) {
+                if (this.images[0]) {
                     this.ready = true;
+                    this.cdr.detectChanges();
                     timerForLoad.unsubscribe();
+                    console.log('this.speakButton', this.speakButton);
+                    this.voice.init({
+                        'speakButton': this.speakButton,
+                        'pauseButton': this.pauseButton,
+                        'resumeButton': this.resumeButton,
+                        'articleText': this.articleText,
+                    });
                 }
             }
         );
@@ -90,21 +97,22 @@ export class AppComponent {
     onSwipe(evt, prev, next) {
         const x = Math.abs(evt.deltaX) > 40 ? (evt.deltaX > 0 ? 'right' : 'left') : '';
 
-        if (x === 'right') {
-            prev.click();
-        }
-        else if (x === 'left') {
-            next.click();
+        switch (x) {
+            case 'right' :
+                prev.click();
+            break;
+            case 'left':
+                next.click();
+            break;
         }
     }
 
     getArtId() {
         if (this.route.substring(0, 8) === '/artwork') {
 
-            let id = Number(this.route.split('/artwork/')[1]);
-            if(id) {
+            const id = Number(this.route.split('/artwork/')[1]);
+            if (id) {
                 this.artId = id;
-                console.log(id);
             }
         }
     }
@@ -170,12 +178,12 @@ export class AppComponent {
         }
     }
 
-    changeArt(way : string) {
+    changeArt(way: string) {
         let newId = this.artId;
 
-        if(way === "prev" && newId>this.minArtId) {
+        if (way === 'prev' && newId > this.minArtId) {
             newId--;
-        } else if(way === "next" && newId<this.numberOfArtworks) {
+        } else if (way === 'next' && newId < this.numberOfArtworks) {
             newId++;
         }
         this.router.navigateByUrl('/artwork/' + newId);
@@ -184,10 +192,9 @@ export class AppComponent {
 
     openDialog() {
         this.dialogOpened = true;
-        let snack = timer(4000).subscribe( 
-            () => {
-                this.dialogOpened = false;
-                snack.unsubscribe();
-            })
+        const snack = timer(4000).subscribe(() => {
+            this.dialogOpened = false;
+            snack.unsubscribe();
+        });
     }
 }
