@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { VoiceSpeaker } from './voice-speaker';
 import { GlobalText } from './../texts/global';
 import { LanguageService } from './language';
+//import { $ } from 'protractor';
+import * as $ from 'jquery';
 
 
 @Component({
@@ -27,6 +29,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     ready = false;
     dialogOpened = false;
     languages = GlobalText.languages;
+    
 
     // Parameters
     public route = '';
@@ -51,6 +54,7 @@ export class AppComponent implements OnInit, AfterViewInit {
         private languageService: LanguageService,
     ) {
         this.languageService.selectedLanguage = 'es-ES';
+        console.log(this.languages[1]);
      }
 
     ngOnInit() {
@@ -64,9 +68,10 @@ export class AppComponent implements OnInit, AfterViewInit {
         return c ? ('./assets/flags-mini/' + c + '.png') : ('./assets/flags-mini/es.png');
     }
 
-   selectLanguage(language: string) {
-    this.header = GlobalText.changeLanguage(language);
-    this.languageService.selectedLanguage = language;
+   selectLanguage(language: any) {
+    this.header = GlobalText.changeLanguage(language.reference);
+    this.languageService.selectedLanguage = language.reference;
+    $('#hide').hide();
     this.loadPage();
    }
 
@@ -188,6 +193,10 @@ export class AppComponent implements OnInit, AfterViewInit {
         }
         this.router.navigateByUrl('/artwork/' + newId);
         window.location.reload();
+    }
+
+    onShowLanguageModal(){
+        console.log('hie');
     }
 
     openDialog() {

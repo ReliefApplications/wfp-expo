@@ -33,6 +33,13 @@
 	cursor: pointer;
 }
 
+.flag{
+    width:25px;
+    height:20px;
+    margin-right: 20px;
+
+}
+
 .dropdown-menu>li>a{
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
@@ -53,7 +60,28 @@
 
 .glyphicon  {
     
-    color:red;
+    color:khaki;
+}
+
+
+
+.modal>.carousel-caption{
+    .modal-header{
+        background-color: khaki;
+        .close{
+            color:red;
+
+        }
+        .modal-title{
+            color:red;
+        }
+        
+    }
+    .modal-body{
+        
+    }
+        
+    
 }
 
 
@@ -81,7 +109,7 @@
             padding: 5px !important;
             border-radius: 8px;
             background-color: rgba(15, 15, 15, 0.5);
-
+        
             .captions {
                 font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
                 font-weight: bold;
