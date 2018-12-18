@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import * as SpeakerModule from 'speak-tts';
 import { LanguageService } from './language';
 
+
 @Injectable()
 export class VoiceSpeaker {
     speaker = new SpeakerModule.default();
@@ -40,11 +41,11 @@ export class VoiceSpeaker {
             console.log('Speech is ready', data);
             // this.addVoicesList(data.voices);
                 this.prepareSpeakButton();
-          })
-          .catch(e => {
-            console.error('An error occured while initializing : ', e);
-            alert('Your browser is not compatible with the speech system');
           });
+        //   .catch(e => {
+        //     console.error('An error occured while initializing : ', e);
+        //     alert('Your browser is not compatible with the speech system');
+        //   });
     }
 
     prepareSpeakButton() {
@@ -56,10 +57,12 @@ export class VoiceSpeaker {
         const textarea: any = this.articleText.nativeElement;
 
         speakButtonSelected.addEventListener('click', () => {
-            const language = this.languageService.selectedLanguage;
+            const language = this.languageService.selectedLanguage.language;
+            console.log(language);
 
             // TODO remove default espagnol, because in this scope we have to get the selected voice
-            const voice = 'Google español';
+            const voice = this.languageService.selectedLanguage.voice;
+            console.log(voice);
 
             if (language) {
                 this.speaker.setLanguage(this.languageService.selectedLanguage);

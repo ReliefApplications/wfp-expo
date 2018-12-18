@@ -96,10 +96,11 @@
         </p>
         <p #articleText *ngIf="artId>9">
             {{this.header.MANZANARES}}
-
-            
-            
         </p>
+        <p #articleText *ngIf="artId==9">
+            {{this.header.your_are_here}}
+        </p>
+    
     </div>
 </div>
 
@@ -150,23 +151,21 @@
 
 <!-- Language Modal -->
 
-<div class="modal" id="languageModal" tabindex="-1" role="dialog" aria-labelledby="deletePreventionModal" #hide>
+<div class="modal" id="languageModal" tabindex="-1" role="dialog" aria-labelledby="deletePreventionModal" >
     <div class="carousel-caption d-md-block">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title" id="myModalLabel">{{this.header.language}}</h4>
+              <h4 class="modal-title" id="myModalLabel">{{this.header.Choose_your_language}}</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
                     <ul class="list-group">
-                            <li *ngFor="let l of languages" class="list-group-item" (click)="selectLanguage(l)" > 
+                            <li *ngFor="let l of languages" class="list-group-item" (click)="selectLanguage(l)" data-dismiss="modal"> 
                                 <img class="flag" [src]="getFlag(l.reference)"> {{l.name}}</li>        
                     </ul>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal" >pussy</button>
-              <button type="button" class="btn btn-danger" data-dismiss="modal">mm</button>
             </div>
           </div>
         </div>

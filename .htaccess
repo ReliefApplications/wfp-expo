@@ -1,18 +1,6 @@
-<<<<<<< HEAD
-RewriteEngine on
+RewriteEngine On
+RewriteCond %{REQUEST_URI} !^/index.html$
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-
-# not rewrite css, js and images
-RewriteCond %{REQUEST_URI} !\.(?:css|js|map|jpe?g|gif|png)$ [NC]
-RewriteRule ^(.*)$ /index.html?path=$1 [NC,L,QSA]
-=======
-<IfModule mod_rewrite.c>
-  RewriteEngine On
-  RewriteBase /
-  RewriteRule ^index\.html$ - [L]
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule . index.html [L]
-</IfModule>
->>>>>>> 0c3e9d937abb2fa0df4300b76d9a7de19ebdcc4c
+RewriteCond %{REQUEST_URI} !\.(css|gif|ico|jpg|js|png|swf|txt|svg|woff|ttf|eot)$
+RewriteRule . index.html [L]

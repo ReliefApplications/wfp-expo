@@ -9,6 +9,7 @@ ARG WORKSPACE=/usr/dockers/expo
 
 # update system
 RUN apt-get update
+RUN apt-get install rsync
 
 # allow npm to install as root user
 #other solution : RUN npm -g install nodegit --unsafe-perm

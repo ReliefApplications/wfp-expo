@@ -7,11 +7,4 @@ export class LanguageService {
    */
   selectedLanguage = null;
 
-  languages = {
-    'es': {
-      language: 'es-ES',
-      voice: '',
-      flag: ''
-    },
-  };
 }

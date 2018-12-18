@@ -14,13 +14,13 @@ export class GlobalText {
           name:'Spanish', 
           reference:'es', 
           language: 'es-ES',
-          voice: ''
+          voice: 'Google español'
         },
         {
           name:'English', 
           reference:'gb',
           language: 'en-EN',
-          voice: ''
+          voice: 'Google US English'
         }
     ];
     

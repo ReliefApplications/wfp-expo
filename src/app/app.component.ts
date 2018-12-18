@@ -29,6 +29,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     ready = false;
     dialogOpened = false;
     languages = GlobalText.languages;
+    show : boolean=true;
     
 
     // Parameters
@@ -69,9 +70,9 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
 
    selectLanguage(language: any) {
+    this.show = false;
     this.header = GlobalText.changeLanguage(language.reference);
-    this.languageService.selectedLanguage = language.reference;
-    $('#hide').hide();
+    this.languageService.selectedLanguage = language;
     this.loadPage();
    }
 
@@ -113,9 +114,8 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
 
     getArtId() {
-        if (this.route.substring(0, 8) === '/artwork') {
-
-            const id = Number(this.route.split('/artwork/')[1]);
+        if (this.route.substring(0, 1) === '/') {
+            const id = Number(this.route.split('/')[1]);
             if (id) {
                 this.artId = id;
             }
@@ -166,8 +166,8 @@ export class AppComponent implements OnInit, AfterViewInit {
                 break;
             case 12:
                 this.artTitle = 'Mountains of Manzanares El Real';
-                this.images[0] = './assets/manzanares/12_1.png';
-                this.images[1] = './assets/manzanares/12_2.png';
+                this.images[0] = './assets/manzanares/12_2.png';
+                this.images[1] = './assets/manzanares/12_1.png';
                 this.images[2] = './assets/manzanares/12_3.png';
                 this.images[3] = './assets/manzanares/12_4.png';
                 break;
@@ -178,6 +178,10 @@ export class AppComponent implements OnInit, AfterViewInit {
                 this.images[2] = '';
                 this.images[3] = '';
                 break;
+            case 9 : 
+                this.artTitle='Caracol';
+                this.images[0]='./assets/manzanares/9_1.png';
+
             default:
                 break;
         }
