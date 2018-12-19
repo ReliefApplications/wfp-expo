@@ -13,8 +13,8 @@ export class AppComponent {
     title = 'wfp-expo';
     artTitle = '';
     ready = false;
-    readonly minArtId = 10; //1
-    readonly numberOfArtworks = 13; //5
+    readonly minArtId = 1; //10
+    readonly numberOfArtworks = 5; //13
     dialogOpened = false;
 
     // Parameters
