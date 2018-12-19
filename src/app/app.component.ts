@@ -111,7 +111,7 @@ export class AppComponent {
      * @param way 
      */
     changePage(way : string) {
-        let newId = this.artId;
+        let newId = this.actualPage.id;
 
         if(way === "prev" && newId > this.MIN_PAGE_ID) {
             newId--;
